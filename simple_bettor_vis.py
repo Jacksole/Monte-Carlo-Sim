@@ -1,122 +1,66 @@
-mport random
-import matplotlib
+import random
+
 import matplotlib.pyplot as plt
 
-def rollDice():
-    roll = random.randint(1,100)
 
-        if roll == 100:
-                return False
-                    elif roll <= 50:
-                            return False
-                                elif 100 > roll >= 50:
-                                        return True
+def rolldice():
+    roll = random.randint(1, 100)
 
-
-                                        '''
-                                        Simple bettor, betting the same amount
-                                        each time.
-                                        '''
-                                        def
-                                        simple_bettor(funds,initial_wager,wager_count):
-                                            value = funds
-                                                wager = initial_wager
-
-                                                    # wager X
-                                                        wX = []
-
-                                                            #value Y
-                                                                vY = []
-
-                                                                    # change to
-                                                                    # 1, to
-                                                                    # avoid
-                                                                    # confusion
-                                                                    # so we
-                                                                    # start @
-                                                                    # wager 1
-                                                                        # instead
-                                                                        # of
-                                                                        # wager
-                                                                        # 0 and
-                                                                        # end
-                                                                        # at
-                                                                        # 100. 
-                                                                            currentWager
-                                                                            = 1
-
-                                                                                #           change
-                                                                                #           this
-                                                                                #           to,
-                                                                                #           less
-                                                                                #           or
-                                                                                #           equal.
-                                                                                    while
-                                                                                    currentWager
-                                                                                    <=
-                                                                                    wager_count:
-                                                                                            if
-                                                                                            rollDice():
-                                                                                                        value
-                                                                                                        +=
-                                                                                                        wager
-                                                                                                                    # append
-                                                                                                                    # #
-                                                                                                                                wX.append(currentWager)
-                                                                                                                                            vY.append(value)
-                                                                                                                                                        
-                                                                                                                                                                else:
-                                                                                                                                                                            value
-                                                                                                                                                                            -=
-                                                                                                                                                                            wager
-                                                                                                                                                                                        # append
-                                                                                                                                                                                        # #
-                                                                                                                                                                                                    wX.append(currentWager)
-                                                                                                                                                                                                                vY.append(value)
-
-                                                                                                                                                                                                                        currentWager
-                                                                                                                                                                                                                        +=
-                                                                                                                                                                                                                        1
-                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                    #print
-                                                                                                                                                                                                                                    'Funds:',
-                                                                                                                                                                                                                                    value
-
-                                                                                                                                                                                                                                        plt.plot(wX,vY)
-                                                                                                                                                                                                                                            
+    if roll == 100:
+        return False
+    elif roll <= 50:
+        return False
+    elif 100 > roll >= 50:
+        return True
 
 
-                                                                                                                                                                                                                                            x
-                                                                                                                                                                                                                                            =
-                                                                                                                                                                                                                                            0
-
-                                                                                                                                                                                                                                            # start
-                                                                                                                                                                                                                                            # this
-                                                                                                                                                                                                                                            # off
-                                                                                                                                                                                                                                            # @
-                                                                                                                                                                                                                                            # 1,
-                                                                                                                                                                                                                                            # then
-                                                                                                                                                                                                                                            # add,
-                                                                                                                                                                                                                                            # and
-                                                                                                                                                                                                                                            # increase
-                                                                                                                                                                                                                                            # 50
-                                                                                                                                                                                                                                            # to
-                                                                                                                                                                                                                                            # 500,
-                                                                                                                                                                                                                                            # then
-                                                                                                                                                                                                                                            # 1000
-                                                                                                                                                                                                                                            while
-                                                                                                                                                                                                                                            x
-                                                                                                                                                                                                                                            <
-                                                                                                                                                                                                                                            100:
-                                                                                                                                                                                                                                                simple_bettor(10000,100,1000)
-                                                                                                                                                                                                                                                    x
-                                                                                                                                                                                                                                                    +=
-                                                                                                                                                                                                                                                    1
+'''
+Simple bettor, betting the same amount each time.
+'''
 
 
-                                                                                                                                                                                                                                                    plt.ylabel('Account
-                                                                                                                                                                                                                                                    Value')
-                                                                                                                                                                                                                                                    plt.xlabel('Wager
-                                                                                                                                                                                                                                                    Count')
-                                                                                                                                                                                                                                                    plt.show()
-                                                                                                                                                                                                                                                        
+def simple_bettor(funds, initial_wager, wager_count):
+    value = funds
+    wager = initial_wager
+
+    # wager X
+    wX = []
+
+    # value Y
+    vY = []
+
+    # change to 1, to avoid confusion so we start @ wager 1
+    # instead of wager 0 and end at 100.
+    currentwager = 1
+
+    #           change this to, less or equal.
+    while currentwager <= wager_count:
+        if rolldice():
+            value += wager
+            # append #
+            wX.append(currentwager)
+            vY.append(value)
+
+        else:
+            value -= wager
+            # append #
+            wX.append(currentwager)
+            vY.append(value)
+
+        currentwager += 1
+
+    # print 'Funds:', value
+
+    plt.plot(wX, vY)
+
+
+x = 0
+
+# start this off @ 1, then add, and increase 50 to 500, then 1000
+while x < 100:
+    simple_bettor(10000, 100, 1000)
+    x += 1
+
+plt.ylabel('Account Value')
+plt.xlabel('Wager Count')
+plt.show()
