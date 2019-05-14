@@ -1,7 +1,6 @@
 import random
-import matplotlib
+
 import matplotlib.pyplot as plt
-import time
 
 
 def rolldice():
