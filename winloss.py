@@ -32,8 +32,8 @@ def simple_bettor(funds,initial_wager,wager_count):
             value -= wager
 
         currentWager += 1
-        print ('Funds:', value)
 
+        print ('Funds:', value)
 
 
 simple_bettor(10000,100,100)
